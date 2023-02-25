@@ -1,11 +1,11 @@
 export function getToken(): string | null {
     return localStorage.getItem('access_token');
 }
-  
-export function setToken(token: string) {
-    localStorage.setItem('access_token', token);
+
+export async function setToken(token: string) {
+    return localStorage.setItem('access_token', JSON.stringify(token));
 }
 
 export function removeToken() {
-    localStorage.removeItem('access_token')
+    localStorage.removeItem('access_token');
 }
