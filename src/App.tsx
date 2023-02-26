@@ -8,7 +8,10 @@ import { getToken } from './utils/token';
 import LoginPage from './components/Login';
 import DashboardPage from './components/Dashboard';
 import CoursePage from './components/Course';
+import ModulesPage from './components/Modules';
+
 import FormCourse from './components/FormCourse';
+import FormModules from './components/FormModules';
 
 import './App.css';
 
@@ -65,6 +68,32 @@ function App() {
                         element={
                             <DashboardLayout>
                                 <CoursePage />
+                            </DashboardLayout>
+                        }
+                    />
+                }
+            />
+
+            <Route
+                path="/dashboard/module"
+                element={
+                    <PrivateRoute
+                        element={
+                            <DashboardLayout>
+                                <ModulesPage />
+                            </DashboardLayout>
+                        }
+                    />
+                }
+            />
+
+            <Route
+                path="/dashboard/module/add"
+                element={
+                    <PrivateRoute
+                        element={
+                            <DashboardLayout>
+                                <FormModules />
                             </DashboardLayout>
                         }
                     />
