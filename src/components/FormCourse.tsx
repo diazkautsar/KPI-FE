@@ -28,14 +28,13 @@ const FormCourse: React.FC = () => {
     const [showToast, setShowToast] = useState(false);
     const [toastTitle, setToastTitle] = useState('');
     const [toastMessage, setToastMessage] = useState('');
-    const [isLoading, setIstLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
 
     React.useEffect(() => {
         getModules().then((response) => {
             const data = response.data as any[];
             setModules([
-                ...modules,
                 ...data.map((item) => ({
                     label: item.name,
                     value: item.id,
@@ -63,12 +62,11 @@ const FormCourse: React.FC = () => {
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0] || null;
-        console.log(file);
         setFormValues({ ...formValues, file });
     };
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-        setIstLoading(true);
+        setIsLoading(true);
         event.preventDefault();
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
@@ -91,7 +89,7 @@ const FormCourse: React.FC = () => {
         });
 
         if (responseUpload.status !== 200) {
-            setIstLoading(false);
+            setIsLoading(false);
             setToastMessage('Upload image to imagekit failed');
             setToastTitle('Upload Image Failed');
             setShowToast(true);
@@ -108,7 +106,7 @@ const FormCourse: React.FC = () => {
         });
 
         if (!responseAddCourse.success) {
-            setIstLoading(false);
+            setIsLoading(false);
             setShowToast(true);
             setToastTitle(responseAddCourse.messageTitle);
             setToastMessage(responseAddCourse.message);
@@ -116,7 +114,7 @@ const FormCourse: React.FC = () => {
             return;
         }
 
-        setIstLoading(false);
+        setIsLoading(false);
         setShowToast(true);
         setToastTitle(responseAddCourse.messageTitle);
         setToastMessage(responseAddCourse.message);
@@ -126,7 +124,7 @@ const FormCourse: React.FC = () => {
     return (
         <React.Fragment>
             <div className="d-flex justify-content-center mb-5">
-                <div className='mx-3'>
+                <div className="mx-3">
                     <Button onClick={() => navigate('/dashboard/course')} variant="danger">
                         Back
                     </Button>
