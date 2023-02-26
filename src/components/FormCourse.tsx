@@ -125,6 +125,13 @@ const FormCourse: React.FC = () => {
 
     return (
         <React.Fragment>
+            <div className="d-flex justify-content-center mb-5">
+                <div className='mx-3'>
+                    <Button onClick={() => navigate('/dashboard/course')} variant="danger">
+                        Back
+                    </Button>
+                </div>
+            </div>
             {modules.length && (
                 <div style={{ margin: '5rem 10rem' }}>
                     <Form onSubmit={handleSubmit} noValidate validated={validated}>

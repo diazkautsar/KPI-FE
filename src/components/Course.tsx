@@ -16,7 +16,7 @@ const CoursePage: React.FC = () => {
         return () => {};
     }, []);
 
-    const goToAddCourse = (link: string) => {
+    const routesLink = (link: string) => {
         return navigate(link);
     };
 
@@ -24,9 +24,14 @@ const CoursePage: React.FC = () => {
         <React.Fragment>
             <div style={{ margin: '2em 2rem' }}>
                 <div className="d-flex justify-content-center mb-5">
-                    <div>
-                        <Button onClick={() => goToAddCourse('/dashboard/course/add')} variant="primary">
+                    <div className='mx-3'>
+                        <Button onClick={() => routesLink('/dashboard/course/add')} variant="primary">
                             Add Course
+                        </Button>
+                    </div>
+                    <div className='mx-3'>
+                        <Button onClick={() => routesLink('/dashboard')} variant="danger">
+                            Back
                         </Button>
                     </div>
                 </div>
