@@ -1,7 +1,6 @@
-import { AxiosError, AxiosResponse } from 'axios';
 import axiosInstance from '../libs/axios';
 import { constructErrorResponse } from '../helpers';
-import { BaseInterfaceResponse, LoginResponseInterface, ConstructErrorResponseInterface } from '../types';
+import { LoginResponseInterface, ConstructErrorResponseInterface } from '../types';
 
 export const login = async (
     username: string,
