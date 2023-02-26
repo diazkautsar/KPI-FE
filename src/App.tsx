@@ -9,9 +9,11 @@ import LoginPage from './components/Login';
 import DashboardPage from './components/Dashboard';
 import CoursePage from './components/Course';
 import ModulesPage from './components/Modules';
+import ActivitiesPage from './components/Activities';
 
 import FormCourse from './components/FormCourse';
 import FormModules from './components/FormModules';
+import FormActivity from './components/FormActivity';
 
 import './App.css';
 
@@ -94,6 +96,32 @@ function App() {
                         element={
                             <DashboardLayout>
                                 <FormModules />
+                            </DashboardLayout>
+                        }
+                    />
+                }
+            />
+
+            <Route
+                path="/dashboard/activity"
+                element={
+                    <PrivateRoute
+                        element={
+                            <DashboardLayout>
+                                <ActivitiesPage />
+                            </DashboardLayout>
+                        }
+                    />
+                }
+            />
+
+            <Route
+                path="/dashboard/activity/add"
+                element={
+                    <PrivateRoute
+                        element={
+                            <DashboardLayout>
+                                <FormActivity />
                             </DashboardLayout>
                         }
                     />
