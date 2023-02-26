@@ -4,7 +4,7 @@ import { Button, Card } from 'react-bootstrap';
 import { getAllCourses } from '../services/course';
 
 const CoursePage: React.FC = () => {
-    const [courses, setCourses] = React.useState<{[K: string]:any}[]>([]);
+    const [courses, setCourses] = React.useState<{ [K: string]: any }[]>([]);
     const navigate = useNavigate();
 
     React.useEffect(() => {
@@ -24,12 +24,12 @@ const CoursePage: React.FC = () => {
         <React.Fragment>
             <div style={{ margin: '2em 2rem' }}>
                 <div className="d-flex justify-content-center mb-5">
-                    <div className='mx-3'>
+                    <div className="mx-3">
                         <Button onClick={() => routesLink('/dashboard/course/add')} variant="primary">
                             Add Course
                         </Button>
                     </div>
-                    <div className='mx-3'>
+                    <div className="mx-3">
                         <Button onClick={() => routesLink('/dashboard')} variant="danger">
                             Back
                         </Button>
@@ -39,7 +39,12 @@ const CoursePage: React.FC = () => {
                     {courses.map((item, index) => {
                         return (
                             <Card key={index} style={{ width: '18rem', margin: '1rem 1rem' }}>
-                                <Card.Img variant="top" src={item.cover_image} alt="course-logo" style={{ height: '10rem' }} />
+                                <Card.Img
+                                    variant="top"
+                                    src={item.cover_image}
+                                    alt="course-logo"
+                                    style={{ height: '10rem' }}
+                                />
                                 <Card.Body>
                                     <div className="text-center">
                                         <div>
@@ -48,28 +53,42 @@ const CoursePage: React.FC = () => {
                                         </div>
 
                                         <div>
-                                            <Card.Text>
-                                                { item.description }
-                                            </Card.Text>
+                                            <Card.Text>{item.description}</Card.Text>
                                         </div>
 
-                                        <div className='mt-3'>
-                                            <div className='mb-1'> Keyword: </div>
-                                            <Card.Text>
-                                                { item.keyword }
-                                            </Card.Text>
+                                        <div className="mt-3">
+                                            <div className="mb-1"> Keyword: </div>
+                                            <Card.Text>{item.keyword}</Card.Text>
                                         </div>
 
-                                        <div className='mt-3'>
-                                            <div className='mb-1'> Modules: </div>
+                                        <div className="mt-3">
+                                            <div className="mb-1"> Modules: </div>
                                             <Card.Text>
-                                                { item.modules.map((item: { name: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | null | undefined; }, index: React.Key | null | undefined) => {
-                                                    return (
-                                                        <React.Fragment key={index}>
-                                                            <div> {item.name} </div>
-                                                        </React.Fragment>
-                                                    )
-                                                }) }
+                                                {item.modules.map(
+                                                    (
+                                                        item: {
+                                                            name:
+                                                                | string
+                                                                | number
+                                                                | boolean
+                                                                | React.ReactElement<
+                                                                      any,
+                                                                      string | React.JSXElementConstructor<any>
+                                                                  >
+                                                                | React.ReactFragment
+                                                                | React.ReactPortal
+                                                                | null
+                                                                | undefined;
+                                                        },
+                                                        index: React.Key | null | undefined
+                                                    ) => {
+                                                        return (
+                                                            <React.Fragment key={index}>
+                                                                <div> {item.name} </div>
+                                                            </React.Fragment>
+                                                        );
+                                                    }
+                                                )}
                                             </Card.Text>
                                         </div>
 
