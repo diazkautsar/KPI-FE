@@ -102,7 +102,7 @@ const FormCourse: React.FC = () => {
         const responseAddCourse = await addCourse({
             name: formValues.name,
             description: formValues.description,
-            cover_image: 'http://test.com',
+            cover_image: responseUpload.data.url,
             keyword: formValues.keyword,
             modules: formValues.modules,
         });
